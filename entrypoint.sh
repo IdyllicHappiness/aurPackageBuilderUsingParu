@@ -19,4 +19,5 @@ tempOutputDir=$(mktemp -d)
 
 PKGDEST="$tempOutputDir" paru -B --skipreview --noconfirm .
 
+mkdir "$GITHUB_WORKSPACE"/output
 cp -a "$tempOutputDir"/* "$GITHUB_WORKSPACE"/output
