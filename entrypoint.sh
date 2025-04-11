@@ -2,7 +2,7 @@
 
 set -ex
 
-echo "Would build ${INPUT_PACKAGE}"
+cd /home/builder
 
 paru -G "$INPUT_PACKAGE"
 
