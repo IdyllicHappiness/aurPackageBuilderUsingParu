@@ -8,7 +8,8 @@ cd /home/builder
 mkdir workdir
 cd workdir
 
-cp -rfv "$GITHUB_WORKSPACE"/checkout/.git ./
+# cp -rfv "$GITHUB_WORKSPACE"/checkout/.git ./
+cp -fv "$GITHUB_WORKSPACE"/checkout/PKGBUILD ./
 
 # paru -G "$INPUT_PACKAGE"
 
