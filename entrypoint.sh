@@ -15,6 +15,11 @@ cp -fv "$GITHUB_WORKSPACE"/checkout/PKGBUILD ./
 
 # cd "$INPUT_PACKAGE" || exit 1
 
+if [[ -n "$INPUT_PRE_PKGS" ]]; then
+    # shellcheck disable=SC2086
+    paru -S --noconfirm $INPUT_PRE_PKGS
+fi
+
 tempOutputDir=$(mktemp -d)
 
 PKGDEST="$tempOutputDir" paru -B --skipreview --noconfirm .

@@ -5,8 +5,13 @@ inputs:
     description: 'Path relative to repo root where PKGBUILD exists'
     required: false
     default: ''
+  pre_pkgs:
+    description: 'Space separated list of packages to pre install before making the AUR package'
+    required: false
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.path }}
+    - ${{ inputs.pre_pkgs }}
