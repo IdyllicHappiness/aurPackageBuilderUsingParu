@@ -2,7 +2,8 @@ FROM docker.io/library/archlinux:base-devel
 
 RUN pacman -Syu --needed --noconfirm \
     && pacman -S --noconfirm --needed git sudo \
-    && useradd -m builder \
+    && groupadd --gid 118 github_ci_group \
+    && useradd --uid 1001 --gid 118 -m builder \
     && printf 'builder ALL=(ALL:ALL) NOPASSWD: ALL\n' > /etc/sudoers.d/10-arch
 
 WORKDIR /home/builder
