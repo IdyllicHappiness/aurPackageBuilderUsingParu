@@ -1,11 +1,11 @@
 name: 'AUR Package Builder using Paru'
 description: 'Builds a given AUR package using Paru'
 inputs:
-  package-to-build:
-    description: 'Which AUR package to build using Paru'
+  package:
+    description: 'The name of the AUR package to build using Paru'
     required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.package-to-build }}
+    - ${{ inputs.package }}
