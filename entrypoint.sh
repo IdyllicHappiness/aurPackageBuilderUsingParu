@@ -2,16 +2,20 @@
 
 set -ex
 
-cd /home/builder
-
 ls -lahR /github
 
-paru -G "$INPUT_PACKAGE"
+cd /home/builder
+mkdir workdir
+cd workdir
 
-cd "$INPUT_PACKAGE" || exit 1
+cp -rfv "$GITHUB_WORKSPACE"/checkout/.git ./
+
+# paru -G "$INPUT_PACKAGE"
+
+# cd "$INPUT_PACKAGE" || exit 1
 
 tempOutputDir=$(mktemp -d)
 
-PKGDEST="$tempOutputDir" paru -B --noconfirm .
+PKGDEST="$tempOutputDir" paru -B --skipreview --noconfirm .
 
-cp -a "$tempOutputDir"/* /github/workspace
+cp -a "$tempOutputDir"/* "$GITHUB_WORKSPACE"/output

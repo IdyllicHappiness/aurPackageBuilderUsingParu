@@ -1,11 +1,12 @@
 name: 'AUR Package Builder using Paru'
 description: 'Builds a given AUR package using Paru'
 inputs:
-  package:
-    description: 'The name of the AUR package to build using Paru'
-    required: true
+  path:
+    description: 'Path relative to repo root where PKGBUILD exists'
+    required: false
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.package }}
+    - ${{ inputs.path }}
